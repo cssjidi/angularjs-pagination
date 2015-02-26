@@ -1,0 +1,40 @@
+<div class="page-list-panel panel-footer">
+    <div class="pagination-text dib vam">
+        共显示<span class="total">{{pager.getTotal()}}</span>条,&nbsp;每页显示&nbsp;
+        <select class="input-sm" ng-model="pager.getCount" ng-change="pager.setCount(pager.getCount);action({page:1,limit:pager.getCount})">
+            <option value="20">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>&nbsp;条,
+        当前<span class="total">{{pager.getCurrent()}}</span>页，共<span class="total">{{pager.pageSize()}}</span>页
+    </div>
+    <div class="row">
+        <div class="col-sm-7">
+            <ul class="pagination vam">
+        <li class="first" ng-class="{disabled: pager.isFirst()}"><a href="javascript:void(0);" ng-click="pager.firstPage();action({page:1,limit:pager.getCount})">首页</a></li>
+        <li class="previous" ng-class="{disabled: pager.isFirst()}"><a href="javascript:void(0);" ng-click="pager.prevPage();action({page:pager.getCurrent(),limit:pager.getCount})">前一页</a></li>{{pagelist}}
+        <li ng-repeat="list in pageList" ng-class="{'active':(pager.getCurrent() == list.page)}" class="noText">
+            <a href="" ng-click="pager.setPage(list.page);action({page:list.page,limit:pager.getCount})">{{list.text}}</a>
+        </li>
+        <li class="next" ng-class="{disabled: pager.isLast()}"><a href="javascript:void(0);" ng-click="pager.nextPage();action({page:pager.getCurrent(),limit:pager.getCount})">后一页</a></li>
+        <li class="last" ng-class="{disabled: pager.isLast()}"><a href="javascript:void(0);" ng-click="pager.lastPage();action({page:pager.pageSize(),limit:pager.getCount})">末页</a></li>
+    </ul>
+        </div>
+        <div class="col-sm-2">
+            <span>跳转到：</span>
+            <form class="form-inline pagination" name="myForm">
+                <div class="input-group">
+
+                    <input type="number" class="form-control input-sm" ng-model="pageNumber" ng-keyup="myPage($event)" style="width:70px;" min="1" max="pager.pageSize()" required>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="myPage()">Go!</button>
+                    </span>
+                    <span class="label label-danger">{{myForm.input.$valid}}</span>
+                    <span class="label label-danger">{{myForm.input.$error}}</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
