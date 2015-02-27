@@ -1,14 +1,14 @@
 <div class="page-list-panel panel-footer">
     <div class="pagination-text dib vam">
         共显示<span class="total">{{pager.getTotal()}}</span>条,&nbsp;每页显示&nbsp;
-        <select class="input-sm" ng-model="pager.getCount" ng-change="pager.setCount(pager.getCount);action({page:1,limit:pager.getCount})">
-            <option value="20">20</option>
+        <select class="input-sm" ng-model="pageCount" ng-change="pager.setCount(pageCount);action({page:1,limit:pageCount})">
+            <option value="20">20</option> 
             <option value="50">50</option>
             <option value="100">100</option>
         </select>&nbsp;条,
         当前<span class="total">{{pager.getCurrent()}}</span>页，共<span class="total">{{pager.pageSize()}}</span>页
     </div>
-    <div class="row">
+    <div class="row">    
         <div class="col-sm-7">
             <ul class="pagination vam">
         <li class="first" ng-class="{disabled: pager.isFirst()}"><a href="javascript:void(0);" ng-click="pager.firstPage();action({page:1,limit:pager.getCount})">首页</a></li>

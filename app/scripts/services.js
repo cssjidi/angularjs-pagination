@@ -22,7 +22,9 @@ app
         this.getCurrentGroup = function(){ //当前组
             return _groupCurrent;
         };
-        this.getCount = parseInt(_count); //获取分页记录数
+        this.getCount = function(){
+			return parseInt(_count); //获取分页记录数
+		};
         this.setTotal = function(total){ //设置总记录数
             _total = total;
         };
